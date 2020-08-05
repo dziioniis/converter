@@ -1,0 +1,32 @@
+<div  id="conteiner" class="container  login-container"> 
+    <h1 style="text-align: center;  ">History</h1> 
+            <div id="row"> 
+                <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">номер операции</th>
+                        <th scope="col">валюта для продажи</th>
+                        <th scope="col">количество</th>
+                        <th scope="col">курс к Рос. рублю</th> 
+                        <th scope="col">исходная валюта</th>
+                        <th scope="col">получаемая сумма</th>
+                        <th scope="col">дата</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let exchange of exchanges" >
+                        <th scope="row">{{exchange.id}}</th>
+                        <td>{{exchange.initialCurrencyName}}</td> 
+                        <td>{{exchange.count}}</td> 
+                        <td>{{exchange.valueOfInitialCurrency}}</td> 
+                        <td>{{exchange.gettingCurrencyName}}</td>
+                        <td>{{exchange.sumOfConverting}}</td>
+                        <td>{{exchange.data}}</td>
+                      </tr>
+                    </tbody>
+                  </table> 
+                  <button class="btn btn-dark"  routerLink="/converter" style="  position: absolute; left: 800px; margin-top:10px; font-size: 20px;width: 267px;">вернуться</button>   
+                  
+            
+            </div>
+        </div>

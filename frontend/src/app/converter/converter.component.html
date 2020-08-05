@@ -1,0 +1,45 @@
+
+
+<div  id="conteiner" class="container  login-container"> 
+    <h1 style="text-align: center;  ">Converter</h1> 
+            <div class="row"> 
+                <div class="col-md-1"></div>
+                <div class="col-md-5 login-form-1">
+                    
+                        <div class="form-group">
+                                  <div ngbDropdown class="d-inline-block">
+                                    <button class="btn btn-dark"   style="  font-size: 20px;width: 267px;" id="dropdownBasic1" ngbDropdownToggle>{{initialCurrencyName}}</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1" >
+                                      <button ngbDropdownItem *ngFor=" let name of currenciesNames" (click)="putinitialCurrencyName(name)">{{name}}</button>
+                                 
+                                    </div> 
+                                    </div>
+                    
+                        </div>
+                        <div class="form-group">
+                            <input  class="form-control"   style="  font-size: 20px;width: 267px;" placeholder="" value="" [(ngModel)]="count" />
+                        </div>
+                 
+                    
+                </div>
+                <div class="col-md-5 login-form-1">
+                    
+                    <div class="form-group">
+                              <div ngbDropdown class="d-inline-block">
+                                <button class="btn btn-block btn-dark"  style="  font-size: 20px;width: 267px;" id="dropdownBasic1" ngbDropdownToggle>{{gettingCurrencyName}}</button>
+                                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                  <button ngbDropdownItem *ngFor=" let name of currenciesNames" (click)="putGettingCurrencyName(name)">{{name}}</button>
+                                </div> 
+                                </div>
+                
+                    </div>
+                    <div class="form-group"> 
+                        <input  class="form-control"   style="  font-size: 20px;width: 267px;" placeholder="" readonly [(ngModel)]="exchangeSum" />
+                    </div> 
+                    <div class="col-md-1"></div>
+             
+                    <button class="btn btn-dark"   style="  position: absolute; right: 230px; top: 210px; font-size: 20px;width: 267px;" (click)="converting()">обмен</button>   
+                    <button class="btn btn-dark" routerLink="/history"  style="  position: absolute; right: 230px; top: 270px; font-size: 20px;width: 267px;">история обменов</button>   
+                    <button class="btn btn-dark" routerLink="/history" (click)="logOut();"  style="  position: absolute; right: 230px; top: 330px; font-size: 20px;width: 267px;">выйти</button>    
+            </div>
+        </div>
