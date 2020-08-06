@@ -14,11 +14,6 @@ public class CurrencyController {
     @Autowired
     CurrencyService currencyService;
 
-    @GetMapping("/currency")
-    public void getCur(){
-        Elements elements= HTMLUtils.parseHTML();
-        currencyService.createCurrency(elements);
-    }
 
     @GetMapping("/getCurrencies")
     public Iterable<Currency> getCurrencies(){

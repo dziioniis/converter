@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 import java.io.IOException;
 
 public class HTMLUtils {
-    @Value("${parsingURL}")
-    public static String parsingURL;
 
-    public static Elements parseHTML(){
+    public static Elements parseHTML(String url){
         Document doc= null;
         try {
-            doc = Jsoup.connect(parsingURL).get();
+            doc = Jsoup.connect(url).get();
         } catch (IOException e) {
             e.printStackTrace();
         }

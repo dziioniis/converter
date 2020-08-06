@@ -27,10 +27,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-
-    @Value("${backend.server.url}")
-    private String backendServerUrl;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 

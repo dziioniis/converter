@@ -8,6 +8,7 @@ import com.chat.demo.service.CurrencyService;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.SystemPropertyUtils;
 
@@ -20,6 +21,8 @@ import java.util.List;
 public class CurrencyServiceImpl implements CurrencyService {
     @Autowired
     private CurrencyRepository currencyRepository;
+    @Value("${url}")
+    private String url;
     @Override
     public void saveCurrency(Currency currency) {
     currencyRepository.save(currency);
@@ -68,6 +71,8 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public Iterable<String> getCurrenciesNames() {
+        if(checkCurrentValueOfCurrencies()!=true) {
+        createCurrency(HTMLUtils.parseHTML(url));}
         return currencyRepository.findAllNames();
     }
 
@@ -75,7 +80,7 @@ public class CurrencyServiceImpl implements CurrencyService {
     public void updateValueOfCurrencies() {
         String name=null;
         Double value=null;
-       Elements elements= HTMLUtils.parseHTML();
+       Elements elements= HTMLUtils.parseHTML(url);
         for (Element element : elements) {
             switch (element.tagName()) {
                 case "Name":
@@ -97,7 +102,7 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public boolean checkCurrentValueOfCurrencies() {
-        Elements elements= HTMLUtils.parseHTML();
+        Elements elements= HTMLUtils.parseHTML(url);
         Element element=elements.first();
         Date date = new Date();
         SimpleDateFormat dateFor = new SimpleDateFormat("dd.MM.yyyy");
