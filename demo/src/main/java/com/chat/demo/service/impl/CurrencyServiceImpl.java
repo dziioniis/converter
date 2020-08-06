@@ -75,7 +75,7 @@ public class CurrencyServiceImpl implements CurrencyService {
     public void updateValueOfCurrencies() {
         String name=null;
         Double value=null;
-       Elements elements= HTMLUtils.parseHTML("https://cbr.ru/development/sxml/");
+       Elements elements= HTMLUtils.parseHTML();
         for (Element element : elements) {
             switch (element.tagName()) {
                 case "Name":
@@ -97,7 +97,7 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     public boolean checkCurrentValueOfCurrencies() {
-        Elements elements= HTMLUtils.parseHTML("https://cbr.ru/development/sxml/");
+        Elements elements= HTMLUtils.parseHTML();
         Element element=elements.first();
         Date date = new Date();
         SimpleDateFormat dateFor = new SimpleDateFormat("dd.MM.yyyy");

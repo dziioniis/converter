@@ -16,7 +16,7 @@ public class CurrencyController {
 
     @GetMapping("/currency")
     public void getCur(){
-        Elements elements= HTMLUtils.parseHTML("https://cbr.ru/development/sxml/");
+        Elements elements= HTMLUtils.parseHTML();
         currencyService.createCurrency(elements);
     }
 
